@@ -158,13 +158,16 @@ impl Relay {
         Ok(r)
     }
 
-    /// Imports, journals, and returns the bytes to fan out.
-    fn accept_update(&self, doc_id: &str, room: &Mutex<Room>, bytes: &[u8]) -> anyhow::Result<()> {
+    /// Imports and journals an update. Returns `false` for a duplicate
+    /// (nothing new), which is then not fanned out.
+    fn accept_update(&self, doc_id: &str, room: &Mutex<Room>, bytes: &[u8]) -> anyhow::Result<bool> {
         let mut r = room.lock();
         let before = r.doc.oplog_vv();
-        r.doc.import(bytes)?;
-        if r.doc.oplog_vv() == before {
-            return Ok(()); // duplicate delivery
+        let status = r.doc.import(bytes)?;
+        // Updates whose dependencies haven't arrived yet are still journaled,
+        // so they survive a restart.
+        if r.doc.oplog_vv() == before && status.pending.is_none() {
+            return Ok(false);
         }
         r.seq += 1;
         r.since_checkpoint += 1;
@@ -177,7 +180,7 @@ impl Relay {
             r.since_checkpoint = 0;
             r.last_checkpoint = Instant::now();
         }
-        Ok(())
+        Ok(true)
     }
 
     /// Current room state (tests, admin).
@@ -289,9 +292,10 @@ async fn handle_socket(socket: WebSocket, relay: Arc<Relay>) -> anyhow::Result<(
                 inc = stream.next() => match inc {
                     Some(Ok(Message::Binary(b))) => match Msg::decode(&b)? {
                         Msg::Update { seq, bytes } => {
-                            relay.accept_update(&doc_id, &room, &bytes)?;
-                            let out = Msg::Update { seq: 0, bytes }.encode();
-                            let _ = room.lock().tx.send((conn_id, Arc::new(out)));
+                            if relay.accept_update(&doc_id, &room, &bytes)? {
+                                let out = Msg::Update { seq: 0, bytes }.encode();
+                                let _ = room.lock().tx.send((conn_id, Arc::new(out)));
+                            }
                             sink.send(Message::Binary(Msg::Ack { seq }.encode().into())).await?;
                         }
                         Msg::Presence(mut p) => {
