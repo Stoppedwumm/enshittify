@@ -78,6 +78,7 @@ tracing-subscriber = { version = "=0.3.23", features = ["env-filter"] }
 ulid = { version = "=3.0.0", features = ["serde"] }
 unic-langid = { version = "=0.9.6", features = ["macros"] }
 wgpu = "=30.0.1"
+naga = { version = "=30.0.1", features = ["wgsl-in"] }
 
 [profile.dev.package."*"]
 opt-level = 2

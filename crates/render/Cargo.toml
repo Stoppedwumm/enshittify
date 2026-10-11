@@ -1,8 +1,21 @@
 [package]
 name = "cutroom-render"
+description = "Cutroom render: render plans, wgpu compositor, CPU reference rasterizer"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
 [dependencies]
+bytemuck.workspace = true
+cutroom-core.workspace = true
+cutroom-media.workspace = true
+pollster.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+wgpu.workspace = true
+blake3.workspace = true
+
+[dev-dependencies]
+image.workspace = true
+naga.workspace = true

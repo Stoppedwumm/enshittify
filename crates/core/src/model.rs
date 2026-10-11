@@ -161,7 +161,7 @@ pub enum ClipSource {
     Generator(Generator),
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize, Default)]
 pub enum BlendMode {
     #[default]
     Normal,
