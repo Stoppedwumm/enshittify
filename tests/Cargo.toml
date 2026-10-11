@@ -1,8 +1,18 @@
 [package]
 name = "cutroom-tests"
+description = "Cross-crate acceptance tests: golden frames, multi-peer convergence"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
 [dependencies]
+cutroom-core.workspace = true
+cutroom-media.workspace = true
+
+[dev-dependencies]
+cutroom-audio.workspace = true
+cutroom-export.workspace = true
+cutroom-render.workspace = true
+proptest.workspace = true
+tempfile.workspace = true

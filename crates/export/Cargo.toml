@@ -1,8 +1,20 @@
 [package]
 name = "cutroom-export"
+description = "Cutroom export: presets, encode pipeline, background job queue"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
 [dependencies]
+crossbeam-channel.workspace = true
+cutroom-audio.workspace = true
+cutroom-core.workspace = true
+cutroom-media.workspace = true
+cutroom-render.workspace = true
+parking_lot.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

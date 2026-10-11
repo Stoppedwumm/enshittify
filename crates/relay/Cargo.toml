@@ -1,8 +1,27 @@
 [package]
 name = "cutroom-relay"
+description = "Cutroom relay server: rooms, op journal, checkpoints, fan-out"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
+[[bin]]
+name = "cutroom-relay"
+path = "src/main.rs"
+
 [dependencies]
+anyhow.workspace = true
+axum.workspace = true
+cutroom-sync.workspace = true
+futures-util.workspace = true
+loro.workspace = true
+parking_lot.workspace = true
+rusqlite.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[dev-dependencies]
+cutroom-core.workspace = true
+tempfile.workspace = true
