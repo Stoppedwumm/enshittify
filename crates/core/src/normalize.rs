@@ -39,10 +39,7 @@ fn priority(c: &Clip) -> (i64, u64, ClipId) {
 
 /// Computes the visible segments and conflicts of one track.
 pub fn normalize_track(seq: &Sequence, track: TrackId) -> TrackView {
-    let clips: Vec<&Clip> = seq
-        .clips_on(track)
-        .filter(|c| c.duration().0 > 0)
-        .collect();
+    let clips: Vec<&Clip> = seq.clips_on(track).filter(|c| c.duration().0 > 0).collect();
     // Boundaries of every clip, sorted & deduplicated.
     let mut cuts: Vec<Ticks> = clips.iter().flat_map(|c| [c.start, c.end()]).collect();
     cuts.sort();

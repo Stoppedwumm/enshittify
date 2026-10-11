@@ -361,9 +361,7 @@ impl Timecode {
         let mut nums = [0u32; 4];
         let off = 4 - parts.len();
         for (i, p) in parts.iter().enumerate() {
-            nums[off + i] = p
-                .parse()
-                .map_err(|_| TimecodeError::Malformed(s.into()))?;
+            nums[off + i] = p.parse().map_err(|_| TimecodeError::Malformed(s.into()))?;
         }
         let tc = Timecode {
             negative,
@@ -414,7 +412,9 @@ mod tests {
             let n = FLICKS_PER_SECOND as i128 * tb.den as i128;
             assert_eq!(n % tb.num as i128, 0, "{tb} not exact");
         }
-        for sr in [8000, 16000, 22050, 32000, 44100, 48000, 88200, 96000, 192000] {
+        for sr in [
+            8000, 16000, 22050, 32000, 44100, 48000, 88200, 96000, 192000,
+        ] {
             assert_eq!(FLICKS_PER_SECOND % sr, 0, "{sr} not exact");
         }
     }
@@ -455,7 +455,10 @@ mod tests {
     #[test]
     fn non_drop_and_short_forms() {
         let tb = Timebase::FPS_25;
-        assert_eq!(Timecode::from_frame(1000, tb, false).to_string(), "00:00:40:00");
+        assert_eq!(
+            Timecode::from_frame(1000, tb, false).to_string(),
+            "00:00:40:00"
+        );
         assert_eq!(Timecode::parse("40:00", tb).unwrap().to_frame(tb), Ok(1000));
         assert_eq!(Timecode::parse("1000", tb).unwrap().to_frame(tb), Ok(1000));
         assert_eq!(Timecode::parse("-1:00", tb).unwrap().to_frame(tb), Ok(-25));
@@ -470,7 +473,10 @@ mod tests {
         let t = Ticks::from_samples(48_000 * 600, 48_000);
         assert_eq!(t, Ticks::from_secs(600));
         assert_eq!(t.to_samples(48_000), 48_000 * 600);
-        assert_eq!(Ticks::from_rational(1001, 1, 30000), Timebase::FPS_29_97.frame_duration());
+        assert_eq!(
+            Ticks::from_rational(1001, 1, 30000),
+            Timebase::FPS_29_97.frame_duration()
+        );
     }
 
     #[test]

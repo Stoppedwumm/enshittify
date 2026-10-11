@@ -458,8 +458,12 @@ pub(crate) fn get_bool(m: &VMap, k: &str) -> Option<bool> {
 
 pub(crate) fn parse_meta(m: &VMap) -> Meta {
     let d = Meta::default();
-    let num = get_i64(m, "fps_num").unwrap_or(d.timebase.num as i64).max(1) as u32;
-    let den = get_i64(m, "fps_den").unwrap_or(d.timebase.den as i64).max(1) as u32;
+    let num = get_i64(m, "fps_num")
+        .unwrap_or(d.timebase.num as i64)
+        .max(1) as u32;
+    let den = get_i64(m, "fps_den")
+        .unwrap_or(d.timebase.den as i64)
+        .max(1) as u32;
     Meta {
         name: get_str(m, "name").unwrap_or(&d.name).to_string(),
         timebase: Timebase::new(num, den),

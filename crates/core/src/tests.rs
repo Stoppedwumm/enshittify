@@ -180,7 +180,10 @@ fn concurrent_moves_converge_and_conflicts_are_detected() {
     assert_eq!(v.conflicts.len(), 1);
     assert_eq!(v.conflicts[0].start, Ticks::from_secs(8));
     assert_eq!(v.conflicts[0].end, Ticks::from_secs(13));
-    assert_eq!(normalize_track(b.snapshot().main().unwrap(), init.video_track), v);
+    assert_eq!(
+        normalize_track(b.snapshot().main().unwrap(), init.video_track),
+        v
+    );
 }
 
 #[test]
@@ -231,7 +234,9 @@ fn store_round_trip_and_crash_recovery() {
     assert!(!d2.can_undo());
     store2.save(&d2).unwrap();
     assert_eq!(
-        std::fs::read_dir(store2.root().join("oplog")).unwrap().count(),
+        std::fs::read_dir(store2.root().join("oplog"))
+            .unwrap()
+            .count(),
         0
     );
     let (_, d3) = ProjectStore::open(store2.root()).unwrap();

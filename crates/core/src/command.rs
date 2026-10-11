@@ -239,7 +239,9 @@ impl Command for SetMeta {
     }
     fn apply(&self, tx: &mut Tx<'_>) -> CmdResult {
         if self.0.width == 0 || self.0.height == 0 || self.0.sample_rate == 0 {
-            return Err(CommandError::Invalid("zero dimension or sample rate".into()));
+            return Err(CommandError::Invalid(
+                "zero dimension or sample rate".into(),
+            ));
         }
         write_meta(&tx.meta(), &self.0)
     }
@@ -397,7 +399,11 @@ impl Command for AddTrack {
         let index = self
             .index
             .or_else(|| same.last().map(|(i, _)| i + 1))
-            .unwrap_or(if self.kind.is_visual() { 0 } else { seq.tracks.len() });
+            .unwrap_or(if self.kind.is_visual() {
+                0
+            } else {
+                seq.tracks.len()
+            });
         write_track(
             tx,
             self.seq,
@@ -632,7 +638,9 @@ impl Command for SplitClip {
             return Err(CommandError::Invalid("split point outside clip".into()));
         }
         if c.reversed {
-            return Err(CommandError::Invalid("splitting reversed clips lands in v1".into()));
+            return Err(CommandError::Invalid(
+                "splitting reversed clips lands in v1".into(),
+            ));
         }
         let src_split = c.source_tick_at(self.at);
         let m = tx.clip_map(self.seq, self.clip)?;
