@@ -1,0 +1,48 @@
+# Premiere Pro-style overrides applied on top of the defaults.
+[split_at_playhead]
+windows = ["Ctrl+K"]
+macos = ["Cmd+K"]
+
+[blade_tool]
+windows = ["C"]
+macos = ["C"]
+
+[redo]
+windows = ["Ctrl+Shift+Z"]
+macos = ["Shift+Cmd+Z"]
+
+[zoom_in]
+windows = ["="]
+macos = ["="]
+
+[zoom_out]
+windows = ["-"]
+macos = ["-"]
+
+[zoom_to_fit]
+windows = ["\\"]
+macos = ["\\"]
+
+[toggle_snapping]
+windows = ["S"]
+macos = ["S"]
+
+[ripple_delete]
+windows = ["Shift+Delete"]
+macos = ["Shift+Backspace"]
+
+[insert_edit]
+windows = [","]
+macos = [","]
+
+[overwrite_edit]
+windows = ["."]
+macos = ["."]
+
+[export]
+windows = ["Ctrl+M"]
+macos = ["Cmd+M"]
+
+[mute_clip]
+windows = ["Ctrl+Shift+E"]
+macos = ["Shift+Cmd+E"]

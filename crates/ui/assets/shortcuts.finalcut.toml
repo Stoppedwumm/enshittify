@@ -1,0 +1,40 @@
+# Final Cut Pro-style overrides applied on top of the defaults.
+[select_tool]
+windows = ["A"]
+macos = ["A"]
+
+[blade_tool]
+windows = ["B"]
+macos = ["B"]
+
+[insert_edit]
+windows = ["W"]
+macos = ["W"]
+
+[overwrite_edit]
+windows = ["D"]
+macos = ["D"]
+
+[toggle_snapping]
+windows = ["N"]
+macos = ["N"]
+
+[zoom_to_fit]
+windows = ["Shift+Z"]
+macos = ["Shift+Z"]
+
+[detach_audio]
+windows = ["Ctrl+Shift+S"]
+macos = ["Ctrl+Shift+S"]
+
+[save_project_as]
+windows = ["Ctrl+Alt+Shift+S"]
+macos = ["Alt+Shift+Cmd+S"]
+
+[render_preview]
+windows = ["Ctrl+R"]
+macos = ["Ctrl+R"]
+
+[speed_dialog]
+windows = ["Ctrl+Alt+R"]
+macos = ["Alt+Cmd+R"]

@@ -1,0 +1,511 @@
+# Cutroom default keyboard shortcuts.
+#
+# Each action lists bindings for Windows/Linux (`windows`) and macOS (`macos`).
+# `context` scopes the binding: "global" works everywhere (except while typing
+# in a text field), "timeline" / "media" / "player" only while that panel is
+# focused. Users rebind in Tools → Keyboard Shortcuts; overrides are stored
+# per user, never in the project.
+#
+# Key names: letters, digits, F1–F12, Left/Right/Up/Down, Home/End, Enter,
+# Space, Delete, Backspace, Escape, Tab, [ ] , . / = - and "Click" (mouse).
+# Modifiers: Ctrl, Alt (= Option), Shift, Cmd (macOS only).
+
+[new_project]
+context = "global"
+windows = ["Ctrl+N"]
+macos = ["Cmd+N"]
+
+[open_project]
+context = "global"
+windows = ["Ctrl+O"]
+macos = ["Cmd+O"]
+
+[save_project]
+context = "global"
+windows = ["Ctrl+S"]
+macos = ["Cmd+S"]
+
+[save_project_as]
+context = "global"
+windows = ["Ctrl+Shift+S"]
+macos = ["Shift+Cmd+S"]
+
+[archive_project]
+context = "global"
+windows = ["Ctrl+Shift+A"]
+macos = ["Shift+Cmd+A"]
+
+[import_media]
+context = "global"
+windows = ["Ctrl+I"]
+macos = ["Cmd+I"]
+
+[record_voice_over]
+context = "global"
+windows = ["Alt+R"]
+macos = ["Cmd+R"]
+
+[new_media_folder]
+context = "global"
+windows = ["Ctrl+Alt+N"]
+macos = ["Shift+Cmd+N"]
+
+[preferences]
+context = "global"
+windows = ["Ctrl+Shift+,"]
+macos = ["Cmd+,"]
+
+[shortcut_editor]
+context = "global"
+windows = ["Ctrl+Alt+K"]
+macos = ["Ctrl+Cmd+K"]
+
+[export]
+context = "global"
+windows = ["Ctrl+E"]
+macos = ["Cmd+E"]
+
+[undo]
+context = "global"
+windows = ["Ctrl+Z"]
+macos = ["Cmd+Z"]
+
+[redo]
+context = "global"
+windows = ["Ctrl+Y"]
+macos = ["Shift+Cmd+Z"]
+
+[cut]
+context = "global"
+windows = ["Ctrl+X"]
+macos = ["Cmd+X"]
+
+[copy]
+context = "global"
+windows = ["Ctrl+C"]
+macos = ["Cmd+C"]
+
+[paste]
+context = "global"
+windows = ["Ctrl+V"]
+macos = ["Cmd+V"]
+
+[duplicate]
+context = "global"
+windows = ["Ctrl+D"]
+macos = ["Cmd+D"]
+
+[delete]
+context = "global"
+windows = ["Delete"]
+macos = ["Backspace", "Delete"]
+
+[ripple_delete]
+context = "timeline"
+windows = ["Shift+Delete"]
+macos = ["Shift+Backspace", "Shift+Delete"]
+
+[close_gap]
+context = "timeline"
+windows = ["Alt+Delete"]
+macos = ["Alt+D"]
+
+[select_all]
+context = "global"
+windows = ["Ctrl+A"]
+macos = ["Cmd+A"]
+
+[copy_effects]
+context = "timeline"
+windows = ["Ctrl+Alt+C"]
+macos = ["Alt+Cmd+C"]
+
+[paste_effects]
+context = "timeline"
+windows = ["Ctrl+Alt+V"]
+macos = ["Alt+Cmd+V"]
+
+[select_clip_range]
+context = "timeline"
+windows = ["X"]
+macos = ["X"]
+
+[cancel_clip_range]
+context = "timeline"
+windows = ["Shift+X"]
+macos = ["Shift+X"]
+
+[nudge_left]
+context = "timeline"
+windows = ["Alt+Left"]
+macos = ["Alt+Left"]
+
+[nudge_right]
+context = "timeline"
+windows = ["Alt+Right"]
+macos = ["Alt+Right"]
+
+[nudge_up]
+context = "timeline"
+windows = ["Alt+Up"]
+macos = ["Alt+Up"]
+
+[nudge_down]
+context = "timeline"
+windows = ["Alt+Down"]
+macos = ["Alt+Down"]
+
+[split_at_playhead]
+context = "global"
+windows = ["Ctrl+B"]
+macos = ["Cmd+B"]
+
+[trim_start_to_playhead]
+context = "timeline"
+windows = ["Alt+["]
+macos = ["Alt+["]
+
+[trim_end_to_playhead]
+context = "timeline"
+windows = ["Alt+]"]
+macos = ["Alt+]"]
+
+[edit_properties]
+context = "global"
+windows = ["Alt+E"]
+macos = ["Alt+E"]
+
+[crop_and_zoom]
+context = "timeline"
+windows = ["Alt+C"]
+macos = ["Alt+C"]
+
+[crop_to_fit]
+context = "timeline"
+windows = ["Ctrl+F"]
+macos = ["Cmd+F"]
+
+[rotate_cw]
+context = "timeline"
+windows = ["Ctrl+Alt+Right"]
+macos = ["Alt+Cmd+Right"]
+
+[rotate_ccw]
+context = "timeline"
+windows = ["Ctrl+Alt+Left"]
+macos = ["Alt+Cmd+Left"]
+
+[group]
+context = "timeline"
+windows = ["Ctrl+G"]
+macos = ["Cmd+G"]
+
+[ungroup]
+context = "timeline"
+windows = ["Ctrl+Alt+G"]
+macos = ["Alt+Cmd+G"]
+
+[speed_dialog]
+context = "timeline"
+windows = ["Ctrl+R"]
+macos = ["Ctrl+R"]
+
+[freeze_frame]
+context = "timeline"
+windows = ["Alt+F"]
+macos = ["Alt+F"]
+
+[detach_audio]
+context = "timeline"
+windows = ["Ctrl+Alt+D"]
+macos = ["Ctrl+Alt+D"]
+
+[mute_clip]
+context = "timeline"
+windows = ["Ctrl+Shift+M"]
+macos = ["Shift+Cmd+M"]
+
+[stabilization]
+context = "timeline"
+windows = ["Alt+S"]
+macos = ["Alt+S"]
+
+[color_correction]
+context = "timeline"
+windows = ["Ctrl+Shift+C"]
+macos = ["Shift+Cmd+C"]
+
+[chroma_key]
+context = "timeline"
+windows = ["Ctrl+Shift+G"]
+macos = ["Shift+Cmd+G"]
+
+[motion_tracking]
+context = "timeline"
+windows = ["Alt+X"]
+macos = ["Alt+X"]
+
+[color_match]
+context = "timeline"
+windows = ["Alt+M"]
+macos = ["Alt+M"]
+
+[keyframe_panel]
+context = "global"
+windows = ["Alt+K"]
+macos = ["Alt+K"]
+
+[add_keyframe]
+context = "global"
+windows = ["Alt+Click"]
+macos = ["Alt+Click"]
+
+[prev_keyframe]
+context = "timeline"
+windows = ["["]
+macos = ["["]
+
+[next_keyframe]
+context = "timeline"
+windows = ["]"]
+macos = ["]"]
+
+[insert_edit]
+context = "global"
+windows = ["Ctrl+Shift+I"]
+macos = ["Shift+Cmd+I"]
+
+[overwrite_edit]
+context = "global"
+windows = ["Ctrl+Shift+O"]
+macos = ["Shift+Cmd+O"]
+
+[select_tool]
+context = "timeline"
+windows = ["V"]
+macos = ["V"]
+
+[blade_tool]
+context = "timeline"
+windows = ["C"]
+macos = ["C"]
+
+[rename]
+context = "global"
+windows = ["F2"]
+macos = []
+
+[reveal_in_folder]
+context = "media"
+windows = ["Ctrl+Shift+R"]
+macos = ["Shift+Cmd+R"]
+
+[apply_selected_asset]
+context = "global"
+windows = ["Alt+A"]
+macos = ["Alt+A"]
+
+[render_preview]
+context = "timeline"
+windows = ["Enter"]
+macos = ["Enter"]
+
+[play_pause]
+context = "global"
+windows = ["Space"]
+macos = ["Space"]
+
+[stop]
+context = "global"
+windows = ["Ctrl+/"]
+macos = ["Ctrl+/"]
+
+[fullscreen_preview]
+context = "global"
+windows = ["Alt+Enter"]
+macos = ["Ctrl+Cmd+F"]
+
+[prev_frame]
+context = "global"
+windows = ["Left"]
+macos = ["Left"]
+
+[next_frame]
+context = "global"
+windows = ["Right"]
+macos = ["Right"]
+
+[prev_edit_point]
+context = "global"
+windows = ["Up"]
+macos = ["Up"]
+
+[next_edit_point]
+context = "global"
+windows = ["Down"]
+macos = ["Down"]
+
+[back_one_second]
+context = "global"
+windows = ["Shift+Left"]
+macos = ["Shift+Left"]
+
+[forward_one_second]
+context = "global"
+windows = ["Shift+Right"]
+macos = ["Shift+Right"]
+
+[prev_marker]
+context = "global"
+windows = ["Shift+Up"]
+macos = ["Shift+Up"]
+
+[next_marker]
+context = "global"
+windows = ["Shift+Down"]
+macos = ["Shift+Down"]
+
+[project_start]
+context = "global"
+windows = ["Home"]
+macos = ["Home"]
+
+[project_end]
+context = "global"
+windows = ["End"]
+macos = ["End"]
+
+[clip_start]
+context = "global"
+windows = ["Shift+Home"]
+macos = ["Shift+Home"]
+
+[clip_end]
+context = "global"
+windows = ["Shift+End"]
+macos = ["Shift+End"]
+
+[prev_clip]
+context = "global"
+windows = ["Ctrl+Left"]
+macos = ["Cmd+Left"]
+
+[next_clip]
+context = "global"
+windows = ["Ctrl+Right"]
+macos = ["Cmd+Right"]
+
+[snapshot]
+context = "global"
+windows = ["Ctrl+Alt+S"]
+macos = ["Ctrl+Alt+S"]
+
+[zoom_in]
+context = "global"
+windows = ["Ctrl+="]
+macos = ["Cmd+="]
+
+[zoom_out]
+context = "global"
+windows = ["Ctrl+-"]
+macos = ["Cmd+-"]
+
+[zoom_to_fit]
+context = "global"
+windows = ["Shift+Z"]
+macos = ["Shift+Z"]
+
+[mark_in]
+context = "global"
+windows = ["I"]
+macos = ["I"]
+
+[mark_out]
+context = "global"
+windows = ["O"]
+macos = ["O"]
+
+[clear_in_out]
+context = "global"
+windows = ["Ctrl+Shift+X"]
+macos = ["Shift+Cmd+X"]
+
+[add_marker]
+context = "global"
+windows = ["M"]
+macos = ["M"]
+
+[edit_marker]
+context = "global"
+windows = ["Shift+M"]
+macos = ["Shift+M"]
+
+[marker_color_1]
+context = "global"
+windows = ["Alt+1"]
+macos = ["Cmd+1"]
+
+[marker_color_2]
+context = "global"
+windows = ["Alt+2"]
+macos = ["Cmd+2"]
+
+[marker_color_3]
+context = "global"
+windows = ["Alt+3"]
+macos = ["Cmd+3"]
+
+[marker_color_4]
+context = "global"
+windows = ["Alt+4"]
+macos = ["Cmd+4"]
+
+[marker_color_5]
+context = "global"
+windows = ["Alt+5"]
+macos = ["Cmd+5"]
+
+[marker_color_6]
+context = "global"
+windows = ["Alt+6"]
+macos = ["Cmd+6"]
+
+[marker_color_7]
+context = "global"
+windows = ["Alt+7"]
+macos = ["Cmd+7"]
+
+[marker_color_8]
+context = "global"
+windows = ["Alt+8"]
+macos = ["Cmd+8"]
+
+[shuttle_reverse]
+context = "global"
+windows = ["J"]
+macos = ["J"]
+
+[shuttle_stop]
+context = "global"
+windows = ["K"]
+macos = ["K"]
+
+[shuttle_forward]
+context = "global"
+windows = ["L"]
+macos = ["L"]
+
+[toggle_snapping]
+context = "global"
+windows = ["N"]
+macos = ["N"]
+
+[follow_collaborator]
+context = "global"
+windows = ["Ctrl+Shift+F"]
+macos = ["Shift+Cmd+F"]
+
+[jump_to_collaborator]
+context = "global"
+windows = ["Ctrl+Shift+J"]
+macos = ["Shift+Cmd+J"]
