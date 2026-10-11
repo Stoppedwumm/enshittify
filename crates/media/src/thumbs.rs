@@ -13,6 +13,10 @@ pub const THUMB_W: u32 = 320;
 pub const THUMB_H: u32 = 180;
 /// Frames in a hover-scrub filmstrip.
 pub const STRIP_FRAMES: u32 = 10;
+/// Size of each filmstrip frame; the whole strip (1920 px) stays under the
+/// 2048 px texture limit of low-end GPUs.
+pub const STRIP_W: u32 = 192;
+pub const STRIP_H: u32 = 108;
 
 /// Where thumbnails for `id` live under a project's `cache/`.
 pub fn thumb_path(cache_dir: &Path, id: MediaId) -> PathBuf {
@@ -63,7 +67,7 @@ pub fn filmstrip(
     info: &MediaInfo,
     n: u32,
 ) -> Result<RgbaImage, MediaError> {
-    let mut dec = backend.open_video(path, info, DecodeOptions::bounded(THUMB_W, THUMB_H))?;
+    let mut dec = backend.open_video(path, info, DecodeOptions::bounded(STRIP_W, STRIP_H))?;
     let (w, h) = dec.output_size();
     let idx = frame_indices(info, n);
     let mut strip = RgbaImage::new(w * idx.len() as u32, h);

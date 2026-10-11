@@ -143,5 +143,9 @@ fn thumbnails_are_generated() {
     let t = image::open(&thumb).unwrap();
     assert_eq!((t.width(), t.height()), (320, 180));
     let s = image::open(strip.unwrap()).unwrap();
-    assert_eq!(s.width(), 320 * crate::thumbs::STRIP_FRAMES);
+    assert_eq!(
+        s.width(),
+        crate::thumbs::STRIP_W * crate::thumbs::STRIP_FRAMES
+    );
+    assert!(s.width() <= 2048);
 }

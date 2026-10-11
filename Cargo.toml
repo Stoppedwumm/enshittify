@@ -48,7 +48,7 @@ bytemuck = { version = "=1.25.2", features = ["derive"] }
 cpal = "=0.18.2"
 crossbeam-channel = "=0.5.17"
 directories = "=6.0.0"
-eframe = { version = "=0.36.2", default-features = false, features = ["accesskit", "default_fonts", "wgpu", "wayland", "x11", "persistence"] }
+eframe = { version = "=0.36.2", default-features = false, features = ["accesskit", "default_fonts", "wgpu", "glow", "wayland", "x11", "persistence"] }
 egui = "=0.36.2"
 egui_dock = { version = "=0.21.1", features = ["serde"] }
 egui_kittest = "=0.36.2"

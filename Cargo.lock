@@ -1074,6 +1074,12 @@ checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
 [[package]]
 name = "cutroom"
 version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "cutroom-ui",
+ "tracing",
+ "tracing-subscriber",
+]
 
 [[package]]
 name = "cutroom-audio"
@@ -1438,6 +1444,7 @@ dependencies = [
  "egui-wgpu",
  "egui-winit",
  "egui_glow",
+ "glow",
  "glutin",
  "glutin-winit",
  "image",

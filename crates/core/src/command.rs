@@ -291,6 +291,28 @@ impl Command for AddMedia {
     }
 }
 
+/// Renames a media entry (display name only; content is addressed by hash).
+#[derive(Debug, Clone)]
+pub struct RenameMedia {
+    pub id: MediaId,
+    pub name: String,
+}
+
+impl Command for RenameMedia {
+    fn name(&self) -> &'static str {
+        "rename_media"
+    }
+    fn apply(&self, tx: &mut Tx<'_>) -> CmdResult {
+        if !tx.snapshot().media.contains_key(&self.id) {
+            return Err(CommandError::NoMedia(self.id));
+        }
+        tx.media()
+            .ensure_mergeable_map(&self.id.to_hex())?
+            .insert("name", self.name.as_str())?;
+        Ok(())
+    }
+}
+
 /// Removes a media entry. Refuses while clips still reference it.
 #[derive(Debug, Clone)]
 pub struct RemoveMedia(pub MediaId);
@@ -704,6 +726,7 @@ pub enum TransformField {
     Opacity(f64),
     FlipH(bool),
     FlipV(bool),
+    Blend(crate::model::BlendMode),
 }
 
 #[derive(Debug, Clone)]
@@ -748,6 +771,7 @@ impl Command for SetTransform {
                 TransformField::Opacity(v) => ("opacity", v.clamp(0.0, 1.0).into()),
                 TransformField::FlipH(v) => ("flip_h", v.into()),
                 TransformField::FlipV(v) => ("flip_v", v.into()),
+                TransformField::Blend(b) => ("blend", b.as_str().into()),
             };
             m.insert(k, v)?;
         }

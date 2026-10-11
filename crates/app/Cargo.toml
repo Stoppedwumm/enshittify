@@ -1,8 +1,22 @@
 [package]
 name = "cutroom"
+description = "Cutroom — collaborative non-linear video editor"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
+[[bin]]
+name = "cutroom"
+path = "src/main.rs"
+
+[features]
+default = []
+# Link FFmpeg natively (needs FFmpeg dev libraries); otherwise the ffmpeg/ffprobe executables are used.
+ffmpeg = ["cutroom-ui/ffmpeg"]
+
 [dependencies]
+anyhow.workspace = true
+cutroom-ui.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
