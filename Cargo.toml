@@ -29,7 +29,7 @@ default-members = [
 version = "0.0.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
-rust-version = "1.90"
+rust-version = "1.88"
 publish = false
 
 [workspace.dependencies]
@@ -52,7 +52,7 @@ eframe = { version = "=0.36.2", default-features = false, features = ["accesskit
 egui = "=0.36.2"
 egui_dock = { version = "=0.21.1", features = ["serde"] }
 egui_kittest = "=0.36.2"
-ffmpeg-next = { version = "=8.0.0", default-features = false, features = ["codec", "format", "software-scaling", "software-resampling"] }
+ffmpeg-next = { version = "=9.0.0", default-features = false, features = ["codec", "format", "software-scaling", "software-resampling"] }
 fluent-bundle = "=0.16.0"
 futures-util = "=0.3.34"
 image = { version = "=0.25.10", default-features = false, features = ["png", "jpeg"] }
@@ -80,8 +80,14 @@ unic-langid = { version = "=0.9.6", features = ["macros"] }
 wgpu = "=30.0.1"
 naga = { version = "=30.0.1", features = ["wgsl-in"] }
 
+[profile.dev]
+debug = "line-tables-only"
+
+# Dependencies (decoders, Loro, wgpu) are optimised even in dev builds so the
+# editor stays interactive; their debug info is dropped to keep target/ small.
 [profile.dev.package."*"]
 opt-level = 2
+debug = false
 
 [profile.release]
 debug = 1

@@ -118,9 +118,22 @@ impl CutroomApp {
         let ctx = cc.egui_ctx.clone();
         frames.set_waker(move || ctx.request_repaint());
 
+        let joining = opts.relay.is_some() && opts.room.is_some();
         let session = match &opts.project {
             Some(p) if p.join("doc.loro").exists() => Session::open(p, &backend)?,
+            // Joining a room: start empty and receive the room's document, so
+            // we never race the owner with a second InitProject.
+            Some(p) if joining => Session::create_empty(p)?,
             Some(p) => Session::create(p, Meta::default())?,
+            None if joining => {
+                let room = opts.room.as_deref().unwrap_or("room");
+                let p = projects_dir().join(format!("{room}.cutroom"));
+                if p.join("doc.loro").exists() {
+                    Session::open(&p, &backend)?
+                } else {
+                    Session::create_empty(&p)?
+                }
+            }
             None => match settings.recent_projects.first() {
                 Some(p) if p.join("doc.loro").exists() => Session::open(p, &backend)?,
                 _ => Session::create(&untitled_path(), Meta::default())?,

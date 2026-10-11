@@ -160,7 +160,12 @@ impl Relay {
 
     /// Imports and journals an update. Returns `false` for a duplicate
     /// (nothing new), which is then not fanned out.
-    fn accept_update(&self, doc_id: &str, room: &Mutex<Room>, bytes: &[u8]) -> anyhow::Result<bool> {
+    fn accept_update(
+        &self,
+        doc_id: &str,
+        room: &Mutex<Room>,
+        bytes: &[u8],
+    ) -> anyhow::Result<bool> {
         let mut r = room.lock();
         let before = r.doc.oplog_vv();
         let status = r.doc.import(bytes)?;
