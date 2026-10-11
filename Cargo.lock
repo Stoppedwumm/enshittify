@@ -1224,6 +1224,7 @@ dependencies = [
  "image",
  "loro",
  "parking_lot",
+ "postcard",
  "rayon",
  "rfd",
  "serde",

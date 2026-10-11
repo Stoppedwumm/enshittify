@@ -27,6 +27,7 @@ fluent-bundle.workspace = true
 image.workspace = true
 loro.workspace = true
 parking_lot.workspace = true
+postcard.workspace = true
 rayon.workspace = true
 rfd.workspace = true
 serde.workspace = true

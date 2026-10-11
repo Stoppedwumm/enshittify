@@ -92,6 +92,30 @@ pub struct RenderPlan {
     pub missing: Vec<ClipId>,
 }
 
+impl RenderPlan {
+    /// The same plan rendered at `factor` × resolution (preview quality).
+    pub fn scaled(&self, factor: f64) -> RenderPlan {
+        let f = factor.clamp(0.05, 1.0);
+        let mut p = self.clone();
+        p.width = ((self.width as f64 * f).round() as u32).max(1);
+        p.height = ((self.height as f64 * f).round() as u32).max(1);
+        let (sx, sy) = (
+            p.width as f64 / self.width as f64,
+            p.height as f64 / self.height as f64,
+        );
+        for l in &mut p.layers {
+            let m = &mut l.xform.0;
+            m[0] *= sx;
+            m[1] *= sx;
+            m[2] *= sx;
+            m[3] *= sy;
+            m[4] *= sy;
+            m[5] *= sy;
+        }
+        p
+    }
+}
+
 /// Builds the plan for `seq` at `tick`. Deterministic given the same
 /// snapshot and frames.
 pub fn build_plan(
